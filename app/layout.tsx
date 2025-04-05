@@ -1,9 +1,21 @@
-import { Inter } from "next/font/google";
+import { Inter, DM_Serif_Display } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ["latin"],
+  weight: ["400"], // Only available in weight 400
+  display: "swap",
+  variable: "--font-heading",
+});
 
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -39,31 +51,32 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org/",
               "@type": "Person",
-              name: "John Doe",
-              url: "https://www.yourdomain.com/",
-              image: "/profile-image.jpg",
-              jobTitle: "Software Engineer",
+              name: "Aniket Raj",
+              url: "https://aniketraj.online/",
+              image: "/profile-pic.png",
+              jobTitle: "Full Stack Developer",
               worksFor: {
                 "@type": "Organization",
-                name: "Example Inc.",
+                name: "LearnBie",
               },
               sameAs: [
-                "https://www.linkedin.com/in/johndoe/",
-                "https://github.com/johndoe",
-                "https://twitter.com/johndoe",
+                "https://www.linkedin.com/in/aniket-raj-1549881a3",
+                "https://github.com/exewhyz",
+                "https://twitter.com/exwhyzed_op",
               ],
               contactPoint: {
                 "@type": "ContactPoint",
-                email: "johndoe@example.com",
+                email: "aniketraj.xyz+work@gmail.com",
+                telephone: "+91 8840390107",
               },
             }),
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${dmSerifDisplay.variable}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

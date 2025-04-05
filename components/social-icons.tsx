@@ -61,9 +61,9 @@ const SocialIcons: React.FC<SocialIconsProps> = ({ socialData }) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${social.title} Profile`}
-            className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors"
+            className="bg-primary/10 p-3 rounded-full hover:bg-primary/20 transition-all hover:scale-110"
           >
-            <IconComponent className="h-5 w-5" />
+            <IconComponent className="h-5 w-5 text-primary" />
           </Link>
         );
       })}

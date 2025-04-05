@@ -9,9 +9,13 @@ import { tabs } from "@/constants/data";
 const InfoTabs = () => {
   return (
     <Tabs defaultValue="about" className="w-full">
-      <TabsList className="grid grid-cols-2 md:grid-cols-5 w-full h-fit">
+      <TabsList className="bg-primary/5 grid grid-cols-2 md:grid-cols-5 w-full h-fit border border-border">
         {tabs.map((tab) => (
-          <TabsTrigger key={tab} value={tab.toLowerCase()}>
+          <TabsTrigger
+            key={tab}
+            value={tab.toLowerCase()}
+            className="border-r-border last:border-none"
+          >
             {tab}
           </TabsTrigger>
         ))}
