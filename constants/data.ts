@@ -80,7 +80,8 @@ export const data = {
             url: "https://aniketraj.online/",
             githubUrl: "https://github.com/exewhyz/portfolio-web",
             startDate: "2025-04-04",
-            endDate: "2025-04-05"
+            endDate: "2025-04-05",
+            images: ["/portfolio.png"]
         },
         {
             title: "Live Docs",
@@ -89,7 +90,8 @@ export const data = {
             url: "https://live",
             githubUrl: "https://github.com/exewhyz/Live-Docs",
             startDate: "2024-11-06",
-            endDate: "2024-11-28"
+            endDate: "2024-11-28",
+            images: []
         },
         {
             title: "Robota",
@@ -98,7 +100,8 @@ export const data = {
             url: "https://robota.vercel.app",
             githubUrl: "https://github.com/exewhyz/Robota",
             startDate: "2022-08-04",
-            endDate: "2022-08-22"
+            endDate: "2022-08-22",
+            images: []
         },
         {
             title: "E-Commerce Admin Dashboard",
@@ -107,7 +110,18 @@ export const data = {
             url: "https://advanceshopperscms.vercel.app/",
             githubUrl: "https://github.com/exewhyz/Advance-Ecommerce-CMS",
             startDate: "2022-09-01",
-            endDate: "2022-10-31"
+            endDate: "2022-10-31",
+            images: []
+        },
+        {
+            title: "E-Commerce Website",
+            description: "A fully functional e-commerce website built using React, NextJs, and Node.js where users can buy and sell products",
+            technologies: ["HTML", "CSS", "JavaScript", "Typescript", "React", "NextJs", "NodeJS", "Zustand", "Prisma", "PostgreSQL",],
+            url: "https://advance-ecommerce.vercel.app/",
+            githubUrl: "https://github.com/exewhyz/Advance-Ecommerce",
+            startDate: "2022-05-01",
+            endDate: "2022-08-31",
+            images: []
         }
 
     ],
@@ -119,7 +133,9 @@ export const data = {
             startYear: 2019,
             present: false,
             endYear: 2023,
-            stream: "Information Science and Engineering"
+            stream: "Information Science and Engineering",
+            certification: "Certified Full Stack Developer (CFSD)",
+            achievements: ["Top 10% in Full Stack Web Development", "Top 5% in React, NextJs, Nodejs"]
         },
     ],
     workExperience: {

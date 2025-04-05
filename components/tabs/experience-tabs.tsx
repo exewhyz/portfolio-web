@@ -4,7 +4,7 @@ import { Book, Briefcase } from "lucide-react";
 import { data } from "@/constants/data";
 import { Badge } from "../ui/badge";
 import { TabsContent } from "../ui/tabs";
-import LocationYearBadge from "../location-year-badge";
+import { ExperienceItem } from "../experience-item";
 
 const ExperienceTab = () => {
   return (
@@ -23,41 +23,7 @@ const ExperienceTab = () => {
           <div className="space-y-8">
             {data.workExperience.professionalExperience.lists.map(
               (job, index) => (
-                <div
-                  key={index}
-                  className="space-y-3 border-b pb-3 last:border-0 last:pb-0"
-                >
-                  <div>
-                    <h3 className="text-lg font-semibold">{job.position}</h3>
-                    <div className="flex justify-between items-center">
-                      <p className="text-muted-foreground">{job.company}</p>
-                      <LocationYearBadge
-                        location={job.location}
-                        startYear={job.startYear}
-                        endYear={job.endYear}
-                        present={job.present}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h4 className="font-medium">Projects</h4>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {job.projects.map((project, i) => (
-                        <li key={i}>{project}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-2">
-                    <h4 className="font-medium">Key Contributions</h4>
-                    <ul className="list-disc pl-5 space-y-1">
-                      {job.contributions.map((contribution, i) => (
-                        <li key={i}>{contribution}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <ExperienceItem key={index} job={job} />
               )
             )}
           </div>

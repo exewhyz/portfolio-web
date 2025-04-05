@@ -11,10 +11,18 @@ const LocationYearBadge = (props: LocationYearBadgeProps) => {
   const { startYear, endYear, location, present } = props;
   return (
     <div className="flex gap-x-4">
-      <Badge variant="outline">
+      <Badge
+        variant="outline"
+        className="rounded-full bg-primary/5 dark:bg-primary/10"
+      >
         {startYear} - {present ? "Present" : endYear}
       </Badge>
-      <Badge variant="outline">{location}</Badge>
+      <Badge
+        variant="outline"
+        className="rounded-full bg-primary/5 dark:bg-primary/10"
+      >
+        {location}
+      </Badge>
     </div>
   );
 };
