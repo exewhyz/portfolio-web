@@ -78,7 +78,7 @@ export const data = {
             description: "A static React website showcasing my skills and projects",
             technologies: ["HTML", "CSS", "JavaScript", "React", "NextJs"],
             url: "https://aniketraj.online/",
-            githubUrl: "https://github.com/exewhyz/portfolio",
+            githubUrl: "https://github.com/exewhyz/portfolio-web",
             startDate: "2025-04-04",
             endDate: "2025-04-05"
         },
