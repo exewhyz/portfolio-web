@@ -1,7 +1,6 @@
 import { Inter, DM_Serif_Display } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,14 +16,6 @@ const dmSerifDisplay = DM_Serif_Display({
   variable: "--font-heading",
 });
 
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import { PERSONAL_DATA_QUERY, SOCIAL_DATA_QUERY } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
-
 export const metadata: Metadata = {
   title: "Aniket Raj - Software Developer Portfolio",
   description:
@@ -38,8 +29,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const personalData = await client.fetch(PERSONAL_DATA_QUERY);
-  const socialData = await client.fetch(SOCIAL_DATA_QUERY);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -78,21 +67,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${dmSerifDisplay.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <Header />
-              {children}
-              <Footer personalData={personalData} socialData={socialData}/>
-            </SidebarInset>
-          </SidebarProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

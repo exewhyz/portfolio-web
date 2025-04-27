@@ -1,4 +1,3 @@
-// import { data } from "@/constants/data";
 import SocialIcons from "./social-icons";
 
 interface FooterProps {

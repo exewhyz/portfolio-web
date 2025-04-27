@@ -1,14 +1,21 @@
-import React from "react";
-// import Image from "next/image";
 import ProfilePhoto from "./profile-photo";
-import { data } from "@/constants/data";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import SocialIcons from "./social-icons";
+import {
+  getPersonalData,
+  getProfessionalData,
+  getSkills,
+  getSocialData,
+} from "@/sanity/lib/action";
 
-const Hero = () => {
+const Hero = async () => {
+  const personalData = await getPersonalData();
+  const professionalData = await getProfessionalData();
+  const socialData = await getSocialData();
+  const skills = await getSkills();
   return (
     <section className="relative rounded-xl overflow-hidden">
       {/* Background gradient for visual interest */}
@@ -42,7 +49,10 @@ const Hero = () => {
           <div className="relative">
             <div className="absolute -inset-0.5 bg-gradient-to-br from-primary to-accent rounded-full blur opacity-75 dark:opacity-90 animate-pulse"></div>
             <div className="relative">
-              <ProfilePhoto className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-background shadow-xl" />
+              <ProfilePhoto
+                personalData={personalData}
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full border-4 border-background shadow-xl"
+              />
             </div>
           </div>
 
@@ -53,12 +63,14 @@ const Hero = () => {
                 Hello, I&apos;m
               </p>
               <h1 className="text-4xl md:text-5xl font-bold mb-2">
-                {data.personalData.name}
+                {personalData?.name}
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground">
-                {data.professionalData.designations
-                  .filter((deg) => deg.current)
-                  .map((deg) => deg.title)
+                {professionalData.designations
+                  .filter(
+                    (deg: { title: string; current: boolean }) => deg.current
+                  )
+                  .map((deg: { title: string; current: boolean }) => deg.title)
                   .join(" | ")}
               </p>
             </div>
@@ -77,10 +89,10 @@ const Hero = () => {
                   <Mail className="h-4 w-4 text-primary" />
                 </div>
                 <Link
-                  href={`mailto:${data.personalData.email}`}
+                  href={`mailto:${personalData.email}`}
                   className="hover:text-primary transition-colors"
                 >
-                  {data.personalData.email}
+                  {personalData.email}
                 </Link>
               </div>
               <div className="flex items-center gap-2 group">
@@ -88,28 +100,28 @@ const Hero = () => {
                   <Phone className="h-4 w-4 text-primary" />
                 </div>
                 <Link
-                  href={`tel:${data.personalData.phone}`}
+                  href={`tel:${personalData.phone}`}
                   className="hover:text-primary transition-colors"
                 >
-                  {data.personalData.phone}
+                  {personalData.phone}
                 </Link>
               </div>
               <div className="flex items-center gap-2 group">
                 <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors">
                   <MapPin className="h-4 w-4 text-primary" />
                 </div>
-                <span>{data.personalData.address}</span>
+                <span>{personalData.address}</span>
               </div>
             </div>
 
             {/* Social links */}
             <div className="flex gap-3 justify-center md:justify-start">
-              <SocialIcons socialData={data.socialData} />
+              <SocialIcons socialData={socialData.links} />
             </div>
 
             {/* Skills badges with improved styling */}
             <div className="flex flex-wrap gap-2 justify-center md:justify-start">
-              {data.skills.map((skill) => (
+              {skills.map((skill: string) => (
                 <Badge
                   key={skill}
                   variant="secondary"

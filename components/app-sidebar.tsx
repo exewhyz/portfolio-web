@@ -14,17 +14,22 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { data, links } from "@/constants/data";
+import { links } from "@/constants/data";
 import { NavUser } from "./nav-user";
+import { getPersonalData } from "@/sanity/lib/action";
+import { urlFor } from "@/sanity/lib/image";
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export async function AppSidebar({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
+  const personalData = await getPersonalData();
   return (
     <Sidebar {...props}>
       <SidebarHeader>
         <div className="flex items-center gap-2">
           <FileText className="h-6 w-6" />
           <span className="font-bold text-3xl bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 text-transparent bg-clip-text">
-            {data.personalData.name.split(" ")[0]}
+            {personalData?.name.split(" ")[0]}
           </span>
         </div>
       </SidebarHeader>
@@ -53,9 +58,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarFooter>
         <NavUser
           user={{
-            name: data.personalData.name,
-            email: data.personalData.email,
-            avatar: data.personalData.profilePhotoUrl,
+            name: personalData.name,
+            email: personalData.email,
+            avatar: urlFor(personalData.profilePhoto)
+              .auto("format")
+              .format("webp")
+              .url(),
           }}
         />
       </SidebarFooter>

@@ -9,7 +9,7 @@ import {
 import { Calendar, Briefcase, CheckCircle2 } from "lucide-react";
 import LocationYearBadge from "./location-year-badge";
 
-interface JobProps {
+export interface JobProps {
   location: string;
   position: string;
   company: string;
