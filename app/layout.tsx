@@ -22,6 +22,8 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { PERSONAL_DATA_QUERY, SOCIAL_DATA_QUERY } from "@/sanity/lib/queries";
+import { client } from "@/sanity/lib/client";
 
 export const metadata: Metadata = {
   title: "Aniket Raj - Software Developer Portfolio",
@@ -31,11 +33,13 @@ export const metadata: Metadata = {
     "software developer, software engineer,app developer,trainer, web developer, JavaScript, React, Node.js, full stack developer",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personalData = await client.fetch(PERSONAL_DATA_QUERY);
+  const socialData = await client.fetch(SOCIAL_DATA_QUERY);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -85,7 +89,7 @@ export default function RootLayout({
             <SidebarInset>
               <Header />
               {children}
-              <Footer />
+              <Footer personalData={personalData} socialData={socialData}/>
             </SidebarInset>
           </SidebarProvider>
         </ThemeProvider>

@@ -48,7 +48,7 @@ const SocialIcons: React.FC<SocialIconsProps> = ({ socialData }) => {
 
   return (
     <div className="flex gap-4">
-      {socialData.map((social) => {
+      {socialData?.map((social) => {
         // Convert title to lowercase for case-insensitive matching
         const iconKey = social.title.toLowerCase();
         // Get the appropriate icon component or default to Globe

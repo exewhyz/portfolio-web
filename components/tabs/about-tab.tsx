@@ -6,6 +6,7 @@ import { Award, BookOpen, Coffee, Languages, User } from "lucide-react";
 import { TabsContent } from "../ui/tabs";
 
 const AboutTab = () => {
+  
   return (
     <TabsContent value="about" className="space-y-8 py-6">
       <Card className="overflow-hidden border-opacity-50 hover:shadow-md transition-all duration-300">
