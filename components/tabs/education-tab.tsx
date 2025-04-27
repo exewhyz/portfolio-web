@@ -1,10 +1,21 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Book, GraduationCap, MapPin } from "lucide-react";
-import { data } from "@/constants/data";
 import { TabsContent } from "../ui/tabs";
 import { Badge } from "../ui/badge";
+import { getEducation } from "@/sanity/lib/action";
 
-const EducationTab = () => {
+interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  startYear: number;
+  endYear: number;
+  present: boolean;
+  achievements: string[];
+}
+
+const EducationTab = async () => {
+  const education = await getEducation();
   return (
     <TabsContent value="education" className="space-y-6 py-4">
       <Card className="overflow-hidden border-opacity-50 hover:shadow-md transition-all duration-300">
@@ -16,7 +27,7 @@ const EducationTab = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-8 divide-y divide-border">
-            {data.education.map((edu, index) => (
+            {education.map((edu: Education, index: number) => (
               <div
                 key={index}
                 className={`${

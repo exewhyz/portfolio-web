@@ -1,7 +1,6 @@
 import { Inter, DM_Serif_Display } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,12 +16,6 @@ const dmSerifDisplay = DM_Serif_Display({
   variable: "--font-heading",
 });
 
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-
 export const metadata: Metadata = {
   title: "Aniket Raj - Software Developer Portfolio",
   description:
@@ -31,7 +24,7 @@ export const metadata: Metadata = {
     "software developer, software engineer,app developer,trainer, web developer, JavaScript, React, Node.js, full stack developer",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -74,21 +67,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${dmSerifDisplay.variable}`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarInset>
-              <Header />
-              {children}
-              <Footer />
-            </SidebarInset>
-          </SidebarProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

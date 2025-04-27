@@ -1,0 +1,15 @@
+import { defineQuery } from "next-sanity"
+
+export const PERSONAL_DATA_QUERY = defineQuery(`*[_type == "personalData"][0]`)
+export const PROFESSIONAL_DATA_QUERY = defineQuery(`*[_type == "professionalData"][0]`)
+export const SOCIAL_DATA_QUERY = defineQuery(`*[_type == "socialData"][0]`)
+export const SKILLS_QUERY = defineQuery(`*[_type == "skills"][0].skillList`)
+export const PROJECTS_QUERY = defineQuery(`*[_type == "project"]`)
+export const EDUCATION_QUERY = defineQuery(`*[_type == "education"]`)
+export const TRAINING_EXPERIENCE_QUERY = defineQuery(`*[_type == "trainingExperience"][0]`)
+export const PROFESSIONAL_EXPERIENCE_QUERY = defineQuery(`*[_type == "professionalExperience"][0]`)
+export const HOBBIES_QUERY = defineQuery(`*[_type == "hobbies"][0].hobbyList`)
+export const LANGUAGES_QUERY = defineQuery(`*[_type == "languages"][0].languageList`)
+export const CERTIFICATES_QUERY = defineQuery(`*[_type == "certification"]`)
+export const INTERESTS_QUERY = defineQuery(`*[_type == "interests"][0].interestList`)
+export const REFERENCES_QUERY = defineQuery(`*[_type == "references"]`)

@@ -13,8 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Calendar } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-interface ProjectProps {
+export interface Project {
   title: string;
   description: string;
   technologies: string[];
@@ -25,7 +26,7 @@ interface ProjectProps {
   images?: string[]; // Optional image for the project
 }
 
-export function ProjectCard({ project }: { project: ProjectProps }) {
+export function ProjectCard({ project }: { project: Project }) {
   const {
     title,
     description,
@@ -49,7 +50,7 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
       {images && images.length > 0 && (
         <div className="relative w-full h-48 overflow-hidden">
           <Image
-            src={images[0]}
+            src={urlFor(images[0]).url()}
             alt={title}
             fill
             className="object-cover transform group-hover:scale-105 transition-transform duration-500"
@@ -60,7 +61,7 @@ export function ProjectCard({ project }: { project: ProjectProps }) {
 
       <CardHeader
         className={`${
-          images && images.length > 0 && images[0] ? "-mt-8 relative z-10" : ""
+          images && images.length > 0 && images[0] && "-mt-8 relative z-10"
         }`}
       >
         <div className="flex justify-between items-start mb-1">

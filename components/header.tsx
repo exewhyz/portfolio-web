@@ -9,11 +9,18 @@ import {
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 import SocialIcons from "./social-icons";
-import { data } from "@/constants/data";
 import { ModeToggle } from "./toggle-mode";
 import Link from "next/link";
 
-const Header = () => {
+interface HeaderProps {
+  socialData: {
+    links: Array<{
+      title: string;
+      url: string;
+    }>;
+  };
+}
+const Header = ({ socialData }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
       <SidebarTrigger className="-ml-1" />
@@ -33,7 +40,7 @@ const Header = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="ml-auto flex items-center gap-2">
-        <SocialIcons socialData={data.socialData} />
+        <SocialIcons socialData={socialData.links} />
         <Separator orientation="vertical" className="h-4" />
         <ModeToggle />
       </div>

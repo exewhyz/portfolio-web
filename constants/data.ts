@@ -87,7 +87,7 @@ export const data = {
             title: "Live Docs",
             description: "Realtime collaboration features using MERN stack for live document management",
             technologies: ["HTML", "CSS", "JavaScript", "Typescript", "React", "NextJs", "NodeJS"],
-            url: "https://live",
+            url: "https://live-doks.vercel.app/",
             githubUrl: "https://github.com/exewhyz/Live-Docs",
             startDate: "2024-11-06",
             endDate: "2024-11-28",
